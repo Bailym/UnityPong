@@ -13,18 +13,22 @@ public class CPUMovement : MonoBehaviour
     {
         ballRigidBody = ball.GetComponent<Rigidbody2D>();
         cpuRigidBody = GetComponent<Rigidbody2D>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(ballRigidBody.position.y > cpuRigidBody.position.y){
-            cpuRigidBody.position = new Vector2(cpuRigidBody.position.x, cpuRigidBody.position.y+0.05f);
+        if (ballRigidBody != null)
+        {
+            if (ballRigidBody.position.y > cpuRigidBody.position.y)
+            {
+                cpuRigidBody.position = new Vector2(cpuRigidBody.position.x, cpuRigidBody.position.y + 0.05f);
+            }
+            else if (ballRigidBody.position.y < cpuRigidBody.position.y)
+            {
+                cpuRigidBody.position = new Vector2(cpuRigidBody.position.x, cpuRigidBody.position.y - 0.05f);
+            }
         }
-        if(ballRigidBody.position.y < cpuRigidBody.position.y){
-            cpuRigidBody.position = new Vector2(cpuRigidBody.position.x, cpuRigidBody.position.y-0.05f);
-        }        
     }
 }
